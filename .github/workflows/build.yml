@@ -1,0 +1,21 @@
+name: Build & Deploy Android SDk
+on: [push]
+jobs:
+  build:
+    name: Build & Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1 # 将仓库内容拷贝到Ubuntu系统的虚拟环境
+    - name: Build the Docker image # 步骤名字
+      run: |
+        docker build -t docker-protobuf-dart-sdk:{{GITHUB_SHA}} . #执行构建
+    - name: Login Aliyun
+      run: |
+        docker login --username=${{ secrets.DOCKER_USN }} registry.cn-hangzhou.aliyuncs.com --password=${{ secrets.DOCKER_PWD }} # 登录docker，并使用Secret里配置的参数
+        
+    - name: Tag Images
+      run: |
+        docker tag docker-protobuf-dart-sdk registry.cn-hangzhou.aliyuncs.com/xiaoman-cn/docker-protobuf-dart-sdk
+    - name: Push To Aliyun
+      run: |
+        docker push registry.cn-hangzhou.aliyuncs.com/xiaoman-cn/docker-protobuf-dart-sdk:{{GITHUB_SHA}}  # 推送
