@@ -8,7 +8,8 @@ jobs:
     - uses: actions/checkout@v1 # 将仓库内容拷贝到Ubuntu系统的虚拟环境
     - name: Build the Docker image # 步骤名字
       run: |
-        docker build -t docker-protobuf-dart-sdk:${{github.sha}} .  #执行构建
+        docker build -t docker-protobuf-dart-sdk:latest .  #执行构建
+        docker tag docker-protobuf-dart-sdk:latest docker-protobuf-dart-sdk:${{github.sha}}
     - name: Login Aliyun
       run: |
         docker login --username=${{ secrets.DOCKER_USN }} registry.cn-hangzhou.aliyuncs.com --password=${{ secrets.DOCKER_PWD }} # 登录docker，并使用Secret里配置的参数        
@@ -17,4 +18,5 @@ jobs:
         docker tag docker-protobuf-dart-sdk registry.cn-hangzhou.aliyuncs.com/xiaoman-cn/docker-protobuf-dart-sdk
     - name: Push To Aliyun
       run: |
+        docker push registry.cn-hangzhou.aliyuncs.com/xiaoman-cn/docker-protobuf-dart-sdk:latest
         docker push registry.cn-hangzhou.aliyuncs.com/xiaoman-cn/docker-protobuf-dart-sdk:${{github.sha}}  # 推送
