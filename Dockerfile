@@ -13,8 +13,8 @@ RUN apt-get install -qq apt-transport-https wget unzip gnupg2 && \
 ENV PATH="$PATH:/usr/lib/dart/bin" 
 
 RUN mkdir -p /opt/protoc && \
-    wget https://github.com/protocolbuffers/protobuf/releases/download/v3.13.0/protoc-3.13.0-linux-x86_64.zip /opt/protoc/protoc.zip && \
     cd /opt/protoc && \
+    wget https://github.com/protocolbuffers/protobuf/releases/download/v3.13.0/protoc-3.13.0-linux-x86_64.zip -O protoc.zip && \
     unzip protoc.zip && \
     rm protoc.zip
 
