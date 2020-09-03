@@ -11,8 +11,7 @@ jobs:
         docker build -t docker-protobuf-dart-sdk:${{github.sha}} .  #执行构建
     - name: Login Aliyun
       run: |
-        docker login --username=${{ secrets.DOCKER_USN }} registry.cn-hangzhou.aliyuncs.com --password=${{ secrets.DOCKER_PWD }} # 登录docker，并使用Secret里配置的参数
-        
+        docker login --username=${{ secrets.DOCKER_USN }} registry.cn-hangzhou.aliyuncs.com --password=${{ secrets.DOCKER_PWD }} # 登录docker，并使用Secret里配置的参数        
     - name: Tag Images
       run: |
         docker tag docker-protobuf-dart-sdk registry.cn-hangzhou.aliyuncs.com/xiaoman-cn/docker-protobuf-dart-sdk
