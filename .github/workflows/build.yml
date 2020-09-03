@@ -15,7 +15,7 @@ jobs:
     - name: Tag Images
       run: |
         docker tag docker-protobuf-dart-sdk registry.cn-hangzhou.aliyuncs.com/xiaoman-cn/docker-protobuf-dart-sdk
-	docker tag docker-protobuf-dart-sdk registry.cn-hangzhou.aliyuncs.com/xiaoman-cn/docker-protobuf-dart-sdk:${{github.sha}}
+        docker tag docker-protobuf-dart-sdk registry.cn-hangzhou.aliyuncs.com/xiaoman-cn/docker-protobuf-dart-sdk:${{github.sha}}
     - name: Push To Aliyun
       run: |
         docker push registry.cn-hangzhou.aliyuncs.com/xiaoman-cn/docker-protobuf-dart-sdk  # 推送
