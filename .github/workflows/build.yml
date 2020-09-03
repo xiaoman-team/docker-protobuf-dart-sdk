@@ -19,4 +19,4 @@ jobs:
     - name: Push To Aliyun
       run: |
         docker push registry.cn-hangzhou.aliyuncs.com/xiaoman-cn/docker-protobuf-dart-sdk  # 推送
-	docker push registry.cn-hangzhou.aliyuncs.com/xiaoman-cn/docker-protobuf-dart-sdk:${{github.sha}}
+        docker push registry.cn-hangzhou.aliyuncs.com/xiaoman-cn/docker-protobuf-dart-sdk:${{github.sha}}
