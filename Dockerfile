@@ -14,7 +14,7 @@ ENV PATH="$PATH:/usr/lib/dart/bin"
 
 RUN mkdir -p /opt/protoc && \
     cd /opt/protoc && \
-    wget https://github.com/protocolbuffers/protobuf/releases/download/v3.13.0/protoc-3.13.0-linux-x86_64.zip -O protoc.zip && \
+    wget https://github.com/protocolbuffers/protobuf/releases/download/v3.17.3/protoc-3.17.3-linux-x86_64.zip -O protoc.zip && \
     unzip protoc.zip && \
     rm protoc.zip
 
